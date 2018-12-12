@@ -1,0 +1,51 @@
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <p  class="w3-bar-item w3-button">AutoShowIs</p>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a class="w3-bar-item w3-button" routerLink = '/overview'>О салоне</a>
+      <a class="w3-bar-item w3-button" routerLink = '/categories'>Автомобили</a>
+      <a class="w3-bar-item w3-button" routerLink = '/testdrive'>Test-Drive</a>
+      <a href="#" class="w3-bar-item w3-button" (click)="logout($event)">Выйти</a>
+    </div>
+  </div>
+</div>
+
+<!----<ul class="sidenav sidenav-fixed a-sidenav">
+  <h4>AutoShowIs</h4>
+  <li class="bold " 
+      *ngFor ="let link of links"
+      routerLinkActive="active"
+    >
+    <a [routerLink] ="[link.url]" class="waves-effect waves-orange"> 
+      {{link.name}}
+    </a>
+  </li>
+  
+  <li class="bold last">
+    <a href="#" class="waves-effect waves-orange" (click)="logout($event)">Выйти</a>
+  </li>
+</ul>-->
+
+<main class="w3-content w3-padding">
+  <router-outlet></router-outlet>
+</main>
+
+
+<div class="fixed-action-btn" #floating>
+  <a class="btn-floating btn-large red">
+      <i class="large material-icons">add</i>
+  </a>
+  <ul>
+      <li>
+        <a class="btn-floating green" routerLink = '/testdrive'>
+        <i class="material-icons">assignment</i>
+      </a>
+    </li>
+      <li>
+        <a class="btn-floating blue" routerLink = '/categories/new'>
+          <i class="material-icons">list</i>
+        </a>
+      </li>
+  </ul>
+</div>
