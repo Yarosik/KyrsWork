@@ -1,8 +1,8 @@
 <div class="w3-container w3-padding-32" id="location" >
     <h4>Марки автомобилей</h4>
     <button 
-    class="waves-effect waves-light btn grey darken-1"
-    routerLink="/categories/new"
+    class=""
+    routerLink="/marks/new"
     >
       Добавить марку
     </button>
@@ -16,7 +16,7 @@
         <div class="collection" *ngIf="categories.length !== 0; else empty ">
             <a 
             *ngFor = "let category of categories"
-            [routerLink]= "['/categories', category._id]"
+            [routerLink]= "['/marks', category._id]"
             class="collection-item"
             >
             {{category.name}}

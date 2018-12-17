@@ -13,6 +13,7 @@ import { CategoriesPageComponent } from './categories-page/categories-page.compo
 import { CategoriesFormComponent } from './categories-page/categories-form/categories-form.component';
 import { CategoriesCarComponent } from './categories-page/categories-form/categories-car/categories-car.component';
 
+
 const routes: Routes = [
   {
     path: '', component: AuthLayoutComponent, children: [
@@ -27,10 +28,9 @@ const routes: Routes = [
     { path: 'analitics', component: AnaliticsPageComponent},
     { path: 'history', component: HistoryPageComponent},
     { path: 'testdrive', component: TestdrivePageComponent},
-    { path: 'cars', component: CategoriesCarComponent},
-    { path: 'categories', component: CategoriesPageComponent},
-    { path: 'categories/new', component: CategoriesFormComponent},
-    { path: 'categories/:id', component: CategoriesFormComponent}
+    { path: 'marks', component: CategoriesPageComponent},
+    { path: 'marks/new', component: CategoriesFormComponent},
+    { path: 'marks/:id', component: CategoriesFormComponent}
     ]
   }
 ];

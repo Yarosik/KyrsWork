@@ -13,3 +13,16 @@ export interface Category {
 export interface Message {
     message: string
 }
+
+export interface Car {
+    name: string
+    about?: string
+    imageSrc?:string
+    cost: number
+    color?:string
+    country?:string
+    date?:string
+    user?:string
+    category:string
+    _id?: string
+}

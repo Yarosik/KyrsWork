@@ -6,9 +6,13 @@ const carsSchema = new Schema ({
         type:String,
         required: true
     },
-    mark: {
+    color: {
         type:String,
-        required: true
+        required: false
+    },
+    about: {
+        type:String,
+        required: false
     },
     cost: {
         type: Number,
@@ -20,33 +24,16 @@ const carsSchema = new Schema ({
     },
     imageSrc:{
         type :String,
-        required: true
+        required: false
     },
     date: {
-        type: Date,
-        default: Date.now
-    },
-    car:{
-        type:Number,
-        required: true
+        type:String,
+        required: false
     },
     country:{
         type:String,
-        required: true
+        required: false
     },
-    list: [
-        {
-            name:{
-                type: String
-            },
-            quantity: {
-                type: Number
-            },
-            cost: {
-                type: Number
-            }
-        }
-    ],
     user: {
         ref: "users",
         type: Schema.Types.ObjectId

@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class CategoriesPageComponent implements OnInit {
 
-
+  imagePreview = ''
   categories$: Observable<Category[]>
 
   constructor(private categoriesService: CategoriesService) { }
