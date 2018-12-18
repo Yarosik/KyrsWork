@@ -25,7 +25,7 @@ module.exports.delete = async function(req, res ) {
         await Category.remove({_id: req.params.id})
         await Car.remove({category: req.params.id})
         res.status(200).json({
-            message:'Модель удалена'
+            message:'Марка удалена'
         })
     } catch(e){
         errorHandler(res, e)

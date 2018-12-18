@@ -13,18 +13,23 @@ export class CategoriesCarComponent implements OnInit, AfterViewInit, OnDestroy 
 
   @Input('categoryId') categoryId: string
   @ViewChild('modal') modalRef: ElementRef
-  
-  cars:Car[] = []
+
+  cars: Car[] = []
   loading = false
   modal: MaterialInstance
   form: FormGroup
+  carId = null
 
-  constructor(private carsService:CarsService) { }
+  constructor(private carsService: CarsService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
       name: new FormControl(null, Validators.required),
-      cost: new FormControl(null, [Validators.required, Validators.min(1)])
+      cost: new FormControl(1, [Validators.required, Validators.min(1)]),
+      color: new FormControl(null, Validators.required),
+      country: new FormControl(null, Validators.required),
+      date: new FormControl(null, Validators.required),
+      about: new FormControl(null, Validators.required)
       /*color: new FormControl(null, Validators.required),
       country: new FormControl(null, Validators.required),
       date: new FormControl(null, Validators.required),
@@ -39,50 +44,106 @@ export class CategoriesCarComponent implements OnInit, AfterViewInit, OnDestroy 
     })
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.modal.destroy()
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.modal = MaterialService.initModal(this.modalRef)
   }
 
-  onSelectCar(car:Car){
+  onSelectCar(car: Car) {
+    this.carId = car._id
+    this.form.patchValue({
+      name: car.name,
+      cost: car.cost,
+      color: car.color,
+      country: car.country,
+      date: car.date,
+      about: car.about,
+    })
     this.modal.open()
+    MaterialService.updateTextInputs()
   }
 
-  onAddCar(){
-   this.modal.open()
+  onAddCar() {
+    this.carId = null
+    this.form.reset({
+      name: null,
+      cost: 1,
+      color: null,
+      country: null,
+      date: null,
+      about: null
+    })
+    this.modal.open()
+    MaterialService.updateTextInputs()
   }
 
-  onDeleteCar(car:Car){
+  onDeleteCar(event: Event, car: Car) {
+    event.stopPropagation()
 
+    const decision = window.confirm(`Удалить модель "${car.name}"?`)
+
+    if (decision) {
+      this.carsService.delete(car).subscribe(
+        response => {
+          const idx = this.cars.findIndex(c => c._id === car._id)
+          this.cars.splice(idx, 1)
+          MaterialService.toast(response.message)
+        },
+        error =>
+          MaterialService.toast(error.error.message)
+      )
+    }
   }
 
-  onCancel(){
+  onCancel() {
     this.modal.close()
   }
 
-  onSubmit(){
+  onSubmit() {
     this.form.disable()
 
     const newCar: Car = {
       name: this.form.value.name,
       cost: this.form.value.cost,
+      color: this.form.value.color,
+      country: this.form.value.country,
+      date: this.form.value.date,
+      about: this.form.value.about,
       category: this.categoryId
     }
 
-    this.carsService.create(newCar).subscribe(
-      car => {
-        MaterialService.toast('Автомобиль создан')
-        this.cars.push(car)
-      },
-      error =>
-      MaterialService.toast(error.error.message),
-      () => {
-        this.modal.close()
-        this.form.enable()
-      }
-    )
+    const completed = () => {
+      this.modal.close()
+      this.form.reset({ name: '', cost: 1 })
+      this.form.enable()
+    }
+
+    if (this.carId) {
+      newCar._id = this.carId
+      this.carsService.update(newCar).subscribe(
+        car => {
+          const idx = this.cars.findIndex(c => c._id === car._id)
+          this.cars[idx] = car
+          MaterialService.toast('Автомобиль изменён')
+        },
+        error =>
+          MaterialService.toast(error.error.message),
+        completed
+      )
+    } else {
+      this.carsService.create(newCar).subscribe(
+        car => {
+          MaterialService.toast('Автомобиль создан')
+          this.cars.push(car)
+        },
+        error =>
+          MaterialService.toast(error.error.message),
+        completed
+      )
+
+    }
   }
 }

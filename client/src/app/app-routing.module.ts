@@ -11,26 +11,32 @@ import { HistoryPageComponent } from './history-page/history-page.component';
 import { TestdrivePageComponent } from './testdrive-page/testdrive-page.component';
 import { CategoriesPageComponent } from './categories-page/categories-page.component';
 import { CategoriesFormComponent } from './categories-page/categories-form/categories-form.component';
-import { CategoriesCarComponent } from './categories-page/categories-form/categories-car/categories-car.component';
+import { TestdriveMarksComponent } from './testdrive-page/testdrive-marks/testdrive-marks.component';
+import { TestdriveModelsComponent } from './testdrive-page/testdrive-models/testdrive-models.component';
 
 
 const routes: Routes = [
   {
     path: '', component: AuthLayoutComponent, children: [
-      {path: '', redirectTo: '/login', pathMatch: 'full'},
-      {path: 'login', component: LoginPageComponent},
-      {path: 'register', component: RegisterPageComponent}
+      { path: '', redirectTo: '/login', pathMatch: 'full' },
+      { path: 'login', component: LoginPageComponent },
+      { path: 'register', component: RegisterPageComponent }
     ]
   },
   {
-    path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children: [     
-    { path: 'overview', component: OverviewPageComponent},
-    { path: 'analitics', component: AnaliticsPageComponent},
-    { path: 'history', component: HistoryPageComponent},
-    { path: 'testdrive', component: TestdrivePageComponent},
-    { path: 'marks', component: CategoriesPageComponent},
-    { path: 'marks/new', component: CategoriesFormComponent},
-    { path: 'marks/:id', component: CategoriesFormComponent}
+    path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children: [
+      { path: 'overview', component: OverviewPageComponent },
+      { path: 'analitics', component: AnaliticsPageComponent },
+      { path: 'history', component: HistoryPageComponent },
+      {
+        path: 'testdrive', component: TestdrivePageComponent, children: [
+          { path: '', component: TestdriveMarksComponent },
+          { path: ':id', component: TestdriveModelsComponent }
+        ]
+      },
+      { path: 'marks', component: CategoriesPageComponent },
+      { path: 'marks/new', component: CategoriesFormComponent },
+      { path: 'marks/:id', component: CategoriesFormComponent }
     ]
   }
 ];

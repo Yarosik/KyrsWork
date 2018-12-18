@@ -1,95 +1,94 @@
 <div class="row">
-    <div class="col s12">
-        <div class="page-subtitle">
-            <h4>Модели:</h4>
-            <button
-             class="waves-effect waves-light btn grey darken-1 btn-small " 
-             (click)="onAddCar()"
-             >
-                Добавить модель
-            </button>
-        </div>
-
-        <div *ngIf="!loading; else loader">
-            <div class="collection" *ngIf="cars.length !== 0; else empty">
-                <a 
-                *ngFor="let car of cars"
-                class="collection-item collection-item-icon"
-                (click)="onSelectCar(car)"
-                >
-                    <span>
-                        {{car.name}} <strong><br/> {{car.cost}} грн.</strong>
-                    </span>
-                    <span>
-                        <i class="material-icons" (click)="onDeleteCar(car)">delete</i>
-                    </span>
-                </a>
-            </div>
-            <ng-template #empty>
-                    <div class="center">
-                    В модельном ряду нет автомобилей.
-                    </div>
-            </ng-template>
-        </div> 
-        <ng-template #loader>
-            <app-loader></app-loader>
-        </ng-template> 
+  <div class="col s12">
+    <div class="page-subtitle">
+      <h4>Модели:</h4>
+      <button class="waves-effect waves-light btn grey darken-1 btn-small " (click)="onAddCar()">
+        Добавить модель
+      </button>
     </div>
+
+    <div *ngIf="!loading; else loader">
+      <div class="collection" *ngIf="cars.length !== 0; else empty">
+        <a *ngFor="let car of cars" class="collection-item collection-item-icon" (click)="onSelectCar(car)">
+          <span>
+            {{car.name}} <strong><br /> {{car.cost}} грн.</strong>
+            <br />Цвет: {{car.color}} <br />Страна производитель: {{car.country}}
+            <br />Год создания: {{car.date}} <br />Описание: {{car.about}}
+          </span>
+          <span>
+            <button class="material-icons" (click)="onDeleteCar($event, car)">delete</button>
+          </span>
+        </a>
+      </div>
+      <ng-template #empty>
+        <div class="center">
+          В модельном ряду нет автомобилей.
+        </div>
+      </ng-template>
+    </div>
+    <ng-template #loader>
+      <app-loader></app-loader>
+    </ng-template>
+  </div>
 </div>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-<div  class="modal modal-fixed-footer" #modal>
-        <div class="modal-content">
-            <h4 class="mb1">Добавить модель</h4>
-            <div class="input-field">
-                <input 
-                formControlName="name"
-                id="pos-name" 
-                type="text" 
-                [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}"
-                >
-                <label for="pos-name">Название</label>
-            <span 
-                *ngIf = "form.get('name').invalid && form.get('name').touched"
-                class="helper-text red-text"
-                >      
-                Название не задано
-            </span>
-            </div>
+  <div class="modal modal-fixed-footer" #modal>
+    <div class="modal-content">
+      <h4 class="mb1">Добавить модель</h4>
+      <div class="input-field">
+        <input formControlName="name" id="pos-name" type="text" [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
+        <label for="pos-name">Название</label>
+        <span *ngIf="form.get('name').invalid && form.get('name').touched" class="helper-text red-text">
+          Название не задано
+        </span>
+      </div>
 
-            <div class="input-field">
-                <input 
-                id="pos-cost" 
-                type="number"
-                min="1"
-                formControlName="cost"
-                [ngClass]="{'invalid': form.get('cost').invalid && form.get('cost').touched}"
-                 >
-                <label for="pos-cost">Цена</label>
-                <span 
-                *ngIf = "form.get('cost').invalid && form.get('cost').touched"
-                class="helper-text red-text"
-                >      
-                Задайте корректную и цену выше 0
-            </span>
-            </div>
-        </div>
+      <div class="input-field">
+        <input id="pos-cost" type="number" min="1" formControlName="cost" [ngClass]="{'invalid': form.get('cost').invalid && form.get('cost').touched}">
+        <label for="pos-cost">Цена</label>
+        <span *ngIf="form.get('cost').invalid && form.get('cost').touched" class="helper-text red-text">
+          Задайте корректную и цену выше 0
+        </span>
+      </div>
 
-        <div class="modal-footer">
-            <button 
-            type='button' 
-            (click)="onCancel()"  
-            class="modal-action waves-effect waves-black btn-flat"
-            [disabled]="form.disabled"
-            >
-            Отмена
-            </button>
-            <button class="modal-action btn waves-effect"
-            type="submit"
-            [disabled]="form.invalid || form.disabled"
-            >
-            Сохранить</button>
-        </div>
+      <div class="input-field">
+        <input id="pos-color" type="text" formControlName="color" [ngClass]="{'invalid': form.get('color').invalid && form.get('color').touched}">
+        <label for="pos-color">Цвет</label>
+        <span *ngIf="form.get('color').invalid && form.get('color').touched" class="helper-text red-text">
+          Задайте цвет
+        </span>
+      </div>
+
+      <div class="input-field">
+        <input id="pos-country" type="text" formControlName="country" [ngClass]="{'invalid': form.get('country').invalid && form.get('country').touched}">
+        <label for="pos-country">Страна</label>
+      </div>
+
+      <div class="input-field">
+        <input id="pos-date" type="text" formControlName="date" [ngClass]="{'invalid': form.get('date').invalid && form.get('date').touched}">
+        <label for="pos-date">Год создания</label>
+        <span *ngIf="form.get('date').invalid && form.get('date').touched" class="helper-text red-text">
+          Укажите год создания
+        </span>
+      </div>
+
+      <div class="input-field">
+        <textarea  id="pos-about" cols="30" rows="10" formControlName="about" [ngClass]="{'invalid': form.get('about').invalid && form.get('about').touched}"></textarea>
+        <label for="pos-about">Описание</label>
+        <span *ngIf="form.get('about').invalid && form.get('about').touched" class="helper-text red-text">
+          Опишите Автомобиль
+        </span>
+      </div>
+
     </div>
-</form>
 
+    <div class="modal-footer">
+      <button type='button' (click)="onCancel()" class="modal-action waves-effect waves-black btn-flat" [disabled]="form.disabled">
+        Отмена
+      </button>
+      <button class="modal-action btn waves-effect" type="submit" [disabled]="form.invalid || form.disabled">
+        Сохранить</button>
+    </div>
+  </div>
+</form>

@@ -22,6 +22,8 @@ import { CategoriesPageComponent } from './categories-page/categories-page.compo
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { CategoriesFormComponent } from './categories-page/categories-form/categories-form.component';
 import { CategoriesCarComponent } from './categories-page/categories-form/categories-car/categories-car.component';
+import { TestdriveMarksComponent } from './testdrive-page/testdrive-marks/testdrive-marks.component';
+import { TestdriveModelsComponent } from './testdrive-page/testdrive-models/testdrive-models.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { CategoriesCarComponent } from './categories-page/categories-form/catego
     CategoriesPageComponent,
     LoaderComponent,
     CategoriesFormComponent,
-    CategoriesCarComponent
+    CategoriesCarComponent,
+    TestdriveMarksComponent,
+    TestdriveModelsComponent
   ],
   imports: [
     BrowserModule,
