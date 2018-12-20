@@ -15,11 +15,11 @@ const testDriveSchema = new Schema ({
             name:{
                 type: String
             },
-            quantity: {
-                type: Number
-            },
             cost: {
                 type: Number
+            },
+            dat: {
+                type: Date
             }
         }
     ],

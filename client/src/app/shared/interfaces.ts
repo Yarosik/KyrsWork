@@ -25,4 +25,20 @@ export interface Car {
     user?:string
     category:string
     _id?: string
+    dat?: Date
+}
+
+export interface TestDrive {
+    date?: Date
+    test?: number
+    user?: string
+    list: TestDriveCar[]
+    _id?: string
+}
+
+export interface TestDriveCar {
+    name: string
+    cost: number
+    dat: Date
+    _id?: string
 }
