@@ -1,0 +1,38 @@
+.about {
+    position: relative;
+    margin-top: 15%;
+    background-color: #14bdee;
+}
+.about_item_title
+{
+	margin-top: 22px;
+}
+.about_item_title a
+{
+	font-family: 'Roboto Slab', serif;
+	font-size: 20px;
+	font-weight: 700;
+	color: #384158;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.about_item_title a:hover
+{
+	color: #14bdee;
+}
+.about_item_text
+{
+	margin-top: 12px;
+}
+.about_item_text
+{
+	line-height: 2;
+}
+.about_col_middle
+{
+	padding-left: 20px;
+	padding-right: 20px;
+}

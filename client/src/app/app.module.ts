@@ -27,6 +27,14 @@ import { TestdriveModelsComponent } from './testdrive-page/testdrive-models/test
 import { TestFilterComponent } from './testdrive-page/test-filter/test-filter.component';
 import { ReportListComponent } from './history-page/report-list/report-list.component';
 import { ReportFilterComponent } from './history-page/report-filter/report-filter.component';
+import { UserSiteComponent } from './shared/layouts/user-site/user-site.component';
+import { Overview1PageComponent } from './overview1-page/overview1-page.component';
+import { Categories1PageComponent } from './categories1-page/categories1-page.component';
+import { Categories1FormComponent } from './categories1-page/categories1-form/categories1-form.component';
+import { Categories1CarComponent } from './categories1-page/categories1-form/categories1-car/categories1-car.component';
+import { Testdrive1PageComponent } from './testdrive1-page/testdrive1-page.component';
+import { Testdrive1ModelsComponent } from './testdrive1-page/testdrive1-models/testdrive1-models.component';
+import { Testdrive1MarksComponent } from './testdrive1-page/testdrive1-marks/testdrive1-marks.component';
 
 
 
@@ -52,7 +60,15 @@ import { ReportFilterComponent } from './history-page/report-filter/report-filte
     TestdriveModelsComponent,
     TestFilterComponent,
     ReportListComponent,
-    ReportFilterComponent
+    ReportFilterComponent,
+    UserSiteComponent,
+    Overview1PageComponent,
+    Categories1PageComponent,
+    Categories1FormComponent,
+    Categories1CarComponent,
+    Testdrive1PageComponent,
+    Testdrive1ModelsComponent,
+    Testdrive1MarksComponent
   ],
   imports: [
     BrowserModule,

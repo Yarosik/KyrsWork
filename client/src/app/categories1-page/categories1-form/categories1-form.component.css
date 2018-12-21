@@ -1,0 +1,11 @@
+.dn {
+    display: none;
+}
+
+.h200 {
+    height: 200px;
+}
+#location {
+    position: relative;
+    margin-top: 5%;
+}
