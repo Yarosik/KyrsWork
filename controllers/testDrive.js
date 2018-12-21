@@ -26,7 +26,7 @@ module.exports.getAllTest = async function(req, res ) {
         .find(query)
         .sort({date: -1})
         .skip(+req.query.offset)
-        .limit(+rq.query.limit)
+        .limit(+req.query.limit)
 
         res.status(200).json(tests)
 

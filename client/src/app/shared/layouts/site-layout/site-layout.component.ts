@@ -8,14 +8,11 @@ import { MaterialService } from '../../classes/material.service';
   templateUrl: './site-layout.component.html',
   styleUrls: ['./site-layout.component.css']
 })
-export class SiteLayoutComponent implements  AfterViewInit {
-
-@ViewChild('floating') floatingRef: ElementRef
+export class SiteLayoutComponent  {
 
 links = [
   {url: '/overview', name: 'О салоне'},
-  {url: '/analitics', name: 'Аналитика'},
-  {url: '/history', name: 'История'},
+  {url: '/report', name: 'Отчет о тест-драйвах'},
   {url: '/testdrive', name: 'Test-Drive'},
   {url: '/categories', name: 'Автомобили'}
 ]
@@ -23,9 +20,7 @@ links = [
   constructor(private auth: AuthService,
               private router: Router) { 
 }
-  ngAfterViewInit(){
-    MaterialService.initializeFloatingButton(this.floatingRef)
-  }
+  
 
   logout(event: Event){
     event.preventDefault()

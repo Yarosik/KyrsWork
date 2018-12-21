@@ -24,6 +24,11 @@ import { CategoriesFormComponent } from './categories-page/categories-form/categ
 import { CategoriesCarComponent } from './categories-page/categories-form/categories-car/categories-car.component';
 import { TestdriveMarksComponent } from './testdrive-page/testdrive-marks/testdrive-marks.component';
 import { TestdriveModelsComponent } from './testdrive-page/testdrive-models/testdrive-models.component';
+import { TestFilterComponent } from './testdrive-page/test-filter/test-filter.component';
+import { ReportListComponent } from './history-page/report-list/report-list.component';
+import { ReportFilterComponent } from './history-page/report-filter/report-filter.component';
+
+
 
 
 @NgModule({
@@ -44,7 +49,10 @@ import { TestdriveModelsComponent } from './testdrive-page/testdrive-models/test
     CategoriesFormComponent,
     CategoriesCarComponent,
     TestdriveMarksComponent,
-    TestdriveModelsComponent
+    TestdriveModelsComponent,
+    TestFilterComponent,
+    ReportListComponent,
+    ReportFilterComponent
   ],
   imports: [
     BrowserModule,

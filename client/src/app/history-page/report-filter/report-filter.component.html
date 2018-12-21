@@ -1,0 +1,14 @@
+<div class="filter " >
+  <div class="fr">
+      <div class="col order">
+          <div class="input-field inline order-position-input">
+              <input type="number" id="number" min="1" [(ngModel)]="test">
+              <label for="number">Номер Записи</label>
+          </div>
+      </div>
+      
+  </div>
+
+  <button class="btn waves-effect wavers-light btn-small"
+  (click)="submitFilter()">Применить фильтр</button>
+</div>

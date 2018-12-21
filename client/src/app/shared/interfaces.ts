@@ -42,3 +42,9 @@ export interface TestDriveCar {
     dat: Date
     _id?: string
 }
+
+export interface Filter {
+    start?: Date
+    end?:Date
+    test?: number
+}

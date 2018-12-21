@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit } fr
 import { Router, NavigationEnd } from '@angular/router';
 import { MaterialInstance, MaterialService } from '../shared/classes/material.service';
 import { TestDriveService } from './testdrive.service';
-import { TestDriveCar, TestDrive } from '../shared/interfaces';
+import { TestDriveCar, TestDrive, Filter } from '../shared/interfaces';
 import { TestsService } from '../shared/services/tests.service';
 import { Subscription } from 'rxjs';
 
@@ -14,7 +14,12 @@ import { Subscription } from 'rxjs';
 })
 export class TestdrivePageComponent implements OnInit, OnDestroy, AfterViewInit {
 
+  
+  
   @ViewChild("modal") modalRef: ElementRef
+  
+
+ 
   modal: MaterialInstance
   tSub: Subscription
   isRoot: boolean
@@ -40,8 +45,13 @@ export class TestdrivePageComponent implements OnInit, OnDestroy, AfterViewInit 
     }
   }
 
+  applyFilter(filter:Filter){
+
+  }
+
   ngAfterViewInit() {
     this.modal = MaterialService.initModal(this.modalRef)
+
   }
 
   removeCar(testDriveCar: TestDriveCar){

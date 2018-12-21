@@ -15,6 +15,8 @@ import { TestdriveMarksComponent } from './testdrive-page/testdrive-marks/testdr
 import { TestdriveModelsComponent } from './testdrive-page/testdrive-models/testdrive-models.component';
 
 
+
+
 const routes: Routes = [
   {
     path: '', component: AuthLayoutComponent, children: [
@@ -27,7 +29,7 @@ const routes: Routes = [
     path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children: [
       { path: 'overview', component: OverviewPageComponent },
       { path: 'analitics', component: AnaliticsPageComponent },
-      { path: 'history', component: HistoryPageComponent },
+      { path: 'report', component: HistoryPageComponent },
       {
         path: 'testdrive', component: TestdrivePageComponent, children: [
           { path: '', component: TestdriveMarksComponent },

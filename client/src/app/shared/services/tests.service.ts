@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { TestDrive } from "../interfaces";
 import { Observable } from "rxjs";
@@ -12,7 +12,15 @@ export class TestsService {
 
     }
 
-    create(testDrive: TestDrive) : Observable<TestDrive>{
+    create(testDrive: TestDrive): Observable<TestDrive> {
         return this.http.post<TestDrive>('/api/testDrive', testDrive)
+    }
+
+    fetch(params: any = {}): Observable<TestDrive[]> {
+        return this.http.get<TestDrive[]>('/api/testDrive' , {
+            params: new HttpParams({
+                fromObject: params
+            })
+        })
     }
 }

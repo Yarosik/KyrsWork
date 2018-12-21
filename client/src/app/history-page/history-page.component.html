@@ -1,3 +1,35 @@
-<p>
-  history-page works!
-</p>
+<div class="page-title" id="location">
+  <h4>Записи на тесты</h4>
+  <button (click)="isFilterVisible = !isFilterVisible" class="btn btn-small" [ngClass]="{
+  'active': isFilterVisible
+}"
+    data-tooltip="Открыть фильтр" data-position="left"  #tooltip id="location1">
+    <i class="material-icons ">filter_list</i>
+  </button>
+</div>
+
+<app-report-filter *ngIf="isFilterVisible" (onFilter)="applyFilter($event)"></app-report-filter>
+
+<div *ngIf="!reloading; else reloadingBlock">
+  <div *ngIf="tests.length > 0; else empty">
+  <app-report-list [tests]="tests"></app-report-list>
+  <div class="center mb2"
+  *ngIf="!noMore"
+  >
+      <button class="btn waves-effect red darken-1 btn-small" (click)="loadMore()" 
+      *ngIf="!loading; else loader"
+      
+      > еще...</button>
+      <ng-template #loader>
+        <app-loader></app-loader>
+      </ng-template>
+    </div>
+  </div>
+  <ng-template #empty>
+      <div class="center">Записей нет</div>
+    </ng-template>
+</div>
+
+<ng-template #reloadingBlock>
+    <app-loader></app-loader>
+  </ng-template>

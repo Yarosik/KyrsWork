@@ -5,7 +5,8 @@ module.exports.getByCategoryId = async function (req, res) {
     try {
         const cars = await Car.find({
             category: req.params.categoryId,
-            user: req.user.id
+            
+            /*user: req.user.id*/
         })
         res.status(200).json(cars)
     } catch (e) {
@@ -24,7 +25,8 @@ module.exports.create = async function (req, res) {
             imageSrc: req.file ? req.file.path : '',
             date: req.body.date,
             country: req.body.country,
-            user: req.user.id
+            car: req.params.id
+            /*user: req.user.id*/
         }).save()
         res.status(201).json(cars)
     } catch (e) {

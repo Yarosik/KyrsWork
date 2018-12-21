@@ -1,0 +1,53 @@
+<table class="highlight mb2">
+  <thead>
+  <tr>
+      <th>№</th>
+      <th>Дата</th>
+      <th>Сумма</th>
+      <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr  *ngFor="let test of tests">
+      <td>{{test.test}}</td>
+      <td>{{test.date | date:'medium'}}</td>
+      <td>{{computePrice(test)}}</td>
+      <td>
+          <button class="btn btn-small  grey darken-1" 
+          (click) = "selectTest(test)"
+          >
+          <i class="material-icons">search </i>
+          </button>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="modal modal-fixed-footer" #modal>
+  <div class="modal-content" *ngIf="selectedTest">
+      <h4 class="mb1">Записб №{{selectedTest.test}}</h4>
+      <table class="highlight">
+          <thead>
+          <tr>
+              <th>Название</th>
+              <th>Цена</th>
+              <th>Дата</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let item of selectedTest.list">
+              <td>{{item.name}}</td>
+              <td>{{item.cost}}</td>
+              <td>{{item.dat}}</td>
+          </tr>
+          </tbody>
+      </table>
+  </div>
+  <div class="modal-footer">
+      <button 
+      class="modal-action waves-effect waves-black btn-flat"
+      (click)="closeModal()">Закрыть</button>
+  </div>
+</div>
